@@ -1,0 +1,136 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+
+// Component to render button to generate details of each person
+
+class PeopleDetails extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            expanded: false,
+            homeworld: null,
+            species: null,
+            films: [],
+            vehicles: [],
+            starships: [],
+        }
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+        this.setState({ expanded: !this.state.expanded });
+    }
+
+    getVehicles() {
+        var vehiclesArray = [];
+        const vehiclesURL = this.props.peopleDetails.vehicles;
+        for (var i = 0; i < vehiclesURL.length; i++){
+            axios
+            .get(vehiclesURL[i])
+            .then(res => {
+                vehiclesArray.push(res.data.name);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+        this.setState({vehicles: vehiclesArray})
+    }
+
+    getStarships() {
+        var starshipsArray = [];
+        const starshipsURL = this.props.peopleDetails.starships;
+        for (var i = 0; i < starshipsURL.length; i++){
+            axios
+            .get(starshipsURL[i])
+            .then(res => {
+                starshipsArray.push(res.data.name);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+        this.setState({starships: starshipsArray})
+    }
+
+    getFilms() {
+        var filmsArray = [];
+        const filmsURL = this.props.peopleDetails.films;
+        for (var i = 0; i < filmsURL.length; i++){
+            axios
+            .get(filmsURL[i])
+            .then(res => {
+                filmsArray.push(res.data.title);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+        this.setState({films: filmsArray})
+    }
+
+    getHomeworld() {
+        const homeworldURL = this.props.peopleDetails.homeworld;
+        axios
+            .get(homeworldURL)
+            .then(res => {
+                this.setState({
+                    homeworld: res.data.name,
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    getSpecies() {
+        const speciesURL = this.props.peopleDetails.species;
+        axios
+            .get(speciesURL)
+            .then(res => {
+                this.setState({
+                    species: res.data.name,
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    componentDidMount(){
+        this.getHomeworld();
+        this.getSpecies();
+        this.getFilms();
+        this.getVehicles();
+        this.getStarships();
+    }
+
+    render() {
+        const details = this.props.peopleDetails;
+
+        if (!this.state.expanded) {
+            return <button onClick={this.toggle}>Show Details</button>
+        }
+        return (
+            <div>
+                <button onClick={this.toggle}>Hide Details</button>
+                <ul>
+                    <li>Height: {details.height} </li>
+                    <li>Mass: {details.mass}</li>
+                    <li>Hair Color: {details.hair_color}</li>
+                    <li>Skin Color: {details.skin_color}</li>
+                    <li>Eye Color: {details.eye_color}</li>
+                    <li>Birth Year: {details.birth_year}</li>
+                    <li>Gender: {details.gender} </li>
+                    <li>Homeworld: {this.state.homeworld} </li>
+                    <li>Films: {this.state.films.join(', ')} </li>
+                    <li>Species: {this.state.species} </li>
+                    <li>Vehicles: {this.state.vehicles.join(', ')} </li>
+                    <li>Starships: {this.state.starships.join(', ')} </li>
+                </ul>
+            </div>
+        )
+    }
+}
+
+export default PeopleDetails
