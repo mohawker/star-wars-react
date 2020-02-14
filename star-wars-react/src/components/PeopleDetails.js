@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-// Component to render button to generate details of each person
-
 class PeopleDetails extends Component {
     constructor(props) {
         super(props)
@@ -109,11 +107,15 @@ class PeopleDetails extends Component {
         const details = this.props.peopleDetails;
 
         if (!this.state.expanded) {
-            return <button onClick={this.toggle}>Show Details</button>
+            return (
+            <div>
+                <button type="button" className="btn btn-outline-info" onClick={this.toggle} style={{float:'right'}}>Show Details</button>
+            </div>
+            )
         }
         return (
             <div>
-                <button onClick={this.toggle}>Hide Details</button>
+                <button type="button" className="btn btn-outline-info" onClick={this.toggle} style={{float:'right'}}>Hide Details</button>
                 <ul>
                     <li>Height: {details.height} </li>
                     <li>Mass: {details.mass}</li>
