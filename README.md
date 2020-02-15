@@ -9,6 +9,11 @@ Alternatively, you can view the web application by forking the repo and running 
 cd star-wars-react
 npm start
 ```
+**WEB-APP DEMO
+![](star-wars-react-gif.gif)
 
 
 
+GIFs used in webapp: 
+https://giphy.com/stickers/starwars-yoda-baby-fV2Tnvl2gULIA5qamy (by @KPDraws)
+https://giphy.com/stickers/starwars-92MpFQ5Yq9tD2
