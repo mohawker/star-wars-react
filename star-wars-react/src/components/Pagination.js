@@ -5,7 +5,7 @@ class Pagination extends Component {
         const buttons = []
         for (let i = 1; i <= this.props.lastPage; i++) {
             buttons.push(
-                <li className={"page-item" + (this.props.currentPage === i ? ' active' : '')}>
+                <li key={this.props.currentPage} className={"page-item" + (this.props.currentPage === i ? ' active' : '')}>
                     <button className="page-link" onClick={() => this.props.pageButtonClick(i)}>{i}</button>
                 </li>
             )
