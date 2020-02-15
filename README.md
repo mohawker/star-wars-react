@@ -3,7 +3,7 @@ List of all people and their details from the Star Wars universe (SWAPI.co) in a
 
 Hosted on Github pages at: https://mohawker.github.io/star-wars-react/
 
-Alternatively, you can run it by forking the repo and running the commands below:
+Alternatively, you can view the web application by forking the repo and running the commands below:
 
 ```
 cd star-wars-react
