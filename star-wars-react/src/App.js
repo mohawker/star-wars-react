@@ -48,7 +48,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container mt-5">
+      <div className="container mt-3" >
         <img src={Logo} className="center" alt="Logo" />
         <h3 style={{ textAlign: 'center', marginBottom: '0px' }}>Character Encyclopedia</h3>
         <Pagination currentPage={this.state.currentPage} lastPage={this.state.lastPage} pageButtonClick={this.pageButtonClick}/>
