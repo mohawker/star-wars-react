@@ -5,6 +5,7 @@ import './App.css'
 //assets
 import Logo from './assets/star-wars-logo.png'
 import Loading from './assets/BB8-loading.gif'
+import Yoda from './assets/baby-yoda.gif'
 // components
 import PeopleList from './components/PeopleList'
 import Pagination from './components/Pagination'
@@ -54,6 +55,7 @@ class App extends Component {
         <Pagination currentPage={this.state.currentPage} lastPage={this.state.lastPage} pageButtonClick={this.pageButtonClick}/>
         {this.state.loading === true ? <img src={Loading} className="center" alt="Loading..." /> : <PeopleList data={this.state.data}/>}
         <Pagination currentPage={this.state.currentPage} lastPage={this.state.lastPage} pageButtonClick={this.pageButtonClick}/>
+        <p style = {{textAlign: 'center'}}>  Created by: Jun Jia <img src={Yoda} style = {{width:"8%"}} alt=":)" /> </p>
       </div>
     )
   }
