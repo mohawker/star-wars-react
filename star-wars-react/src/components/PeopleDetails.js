@@ -95,12 +95,14 @@ class PeopleDetails extends Component {
             })
     }
 
-    componentDidMount(){
-        this.getHomeworld();
-        this.getSpecies();
-        this.getFilms();
-        this.getVehicles();
-        this.getStarships();
+    async componentDidMount(){
+        await Promise.all([
+        this.getHomeworld(),
+        this.getSpecies(),
+        this.getFilms(),
+        this.getVehicles(),
+        this.getStarships(),
+        ])
     }
 
     render() {
