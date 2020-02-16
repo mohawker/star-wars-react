@@ -5,6 +5,7 @@ class PeopleDetails extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            loading: true,
             expanded: false,
             homeworld: null,
             species: null,
@@ -59,6 +60,7 @@ class PeopleDetails extends Component {
             .get(filmsURL[i])
             .then(res => {
                 filmsArray.push(res.data.title);
+                this.setState({loading: false})
             })
             .catch(err => {
                 console.log(err)
@@ -95,14 +97,12 @@ class PeopleDetails extends Component {
             })
     }
 
-    async componentDidMount(){
-        await Promise.all([
-        this.getHomeworld(),
-        this.getSpecies(),
-        this.getFilms(),
-        this.getVehicles(),
-        this.getStarships(),
-        ])
+     componentDidMount(){
+        this.getHomeworld();
+        this.getSpecies();
+        this.getFilms();
+        this.getVehicles();
+        this.getStarships();
     }
 
     render() {
@@ -115,6 +115,15 @@ class PeopleDetails extends Component {
             </div>
             )
         }
+
+        else if (this.state.expanded && this.state.loading) {
+            return (
+            <div>
+            <button type="button" className="btn btn-outline-info" onClick={this.toggle} style={{float:'right'}}>Loading</button>
+            </div>
+            )
+        }
+
         return (
             <div>
                 <button type="button" className="btn btn-outline-info" onClick={this.toggle} style={{float:'right'}}>Hide Details</button>
