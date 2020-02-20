@@ -23,41 +23,41 @@ class PeopleDetails extends Component {
     getVehicles() {
         var vehiclesArray = [];
         const vehiclesURL = this.props.peopleDetails.vehicles;
-        for (var i = 0; i < vehiclesURL.length; i++) {
+        vehiclesURL.forEach(URL =>
             axios
-                .get(vehiclesURL[i])
+                .get(URL)
                 .then(res => {
                     vehiclesArray.push(res.data.name);
                 })
                 .catch(err => {
                     console.log(err)
                 })
-        }
+        )
         this.setState({ vehicles: vehiclesArray })
     }
 
     getStarships() {
         var starshipsArray = [];
         const starshipsURL = this.props.peopleDetails.starships;
-        for (var i = 0; i < starshipsURL.length; i++) {
+        starshipsURL.forEach(URL =>
             axios
-                .get(starshipsURL[i])
+                .get(URL)
                 .then(res => {
                     starshipsArray.push(res.data.name);
                 })
                 .catch(err => {
                     console.log(err)
                 })
-        }
+        )
         this.setState({ starships: starshipsArray })
     }
 
     getFilms() {
         var filmsArray = [];
         const filmsURL = this.props.peopleDetails.films;
-        for (var i = 0; i < filmsURL.length; i++) {
+        filmsURL.forEach(URL =>
             axios
-                .get(filmsURL[i])
+                .get(URL)
                 .then(res => {
                     filmsArray.push(res.data.title);
                     this.setState({ loading: false })
@@ -65,7 +65,7 @@ class PeopleDetails extends Component {
                 .catch(err => {
                     console.log(err)
                 })
-        }
+        )
         this.setState({ films: filmsArray })
     }
 
@@ -128,18 +128,18 @@ class PeopleDetails extends Component {
             <div>
                 <button type="button" className="btn btn-outline-info" onClick={this.toggle} style={{ float: 'right' }}>Hide Details</button>
                 <ul>
-                    <li>Height: {details.height} </li>
+                    <li>Height: {details.height}</li>
                     <li>Mass: {details.mass}</li>
                     <li>Hair Color: {details.hair_color}</li>
                     <li>Skin Color: {details.skin_color}</li>
                     <li>Eye Color: {details.eye_color}</li>
                     <li>Birth Year: {details.birth_year}</li>
-                    <li>Gender: {details.gender} </li>
-                    <li>Homeworld: {this.state.homeworld} </li>
-                    <li>Films: {this.state.films.join(', ')} </li>
+                    <li>Gender: {details.gender}</li>
+                    <li>Homeworld: {this.state.homeworld}</li>
+                    <li>Films: {this.state.films.join(', ')}</li>
                     <li>Species: {this.state.species} </li>
-                    <li>Vehicles: {this.state.vehicles.join(', ')} </li>
-                    <li>Starships: {this.state.starships.join(', ')} </li>
+                    <li>Vehicles: {this.state.vehicles.join(', ')}</li>
+                    <li>Starships: {this.state.starships.join(', ')}</li>
                 </ul>
             </div>
         )
