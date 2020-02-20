@@ -23,50 +23,50 @@ class PeopleDetails extends Component {
     getVehicles() {
         var vehiclesArray = [];
         const vehiclesURL = this.props.peopleDetails.vehicles;
-        for (var i = 0; i < vehiclesURL.length; i++){
+        for (var i = 0; i < vehiclesURL.length; i++) {
             axios
-            .get(vehiclesURL[i])
-            .then(res => {
-                vehiclesArray.push(res.data.name);
-            })
-            .catch(err => {
-                console.log(err)
-            })
+                .get(vehiclesURL[i])
+                .then(res => {
+                    vehiclesArray.push(res.data.name);
+                })
+                .catch(err => {
+                    console.log(err)
+                })
         }
-        this.setState({vehicles: vehiclesArray})
+        this.setState({ vehicles: vehiclesArray })
     }
 
     getStarships() {
         var starshipsArray = [];
         const starshipsURL = this.props.peopleDetails.starships;
-        for (var i = 0; i < starshipsURL.length; i++){
+        for (var i = 0; i < starshipsURL.length; i++) {
             axios
-            .get(starshipsURL[i])
-            .then(res => {
-                starshipsArray.push(res.data.name);
-            })
-            .catch(err => {
-                console.log(err)
-            })
+                .get(starshipsURL[i])
+                .then(res => {
+                    starshipsArray.push(res.data.name);
+                })
+                .catch(err => {
+                    console.log(err)
+                })
         }
-        this.setState({starships: starshipsArray})
+        this.setState({ starships: starshipsArray })
     }
 
     getFilms() {
         var filmsArray = [];
         const filmsURL = this.props.peopleDetails.films;
-        for (var i = 0; i < filmsURL.length; i++){
+        for (var i = 0; i < filmsURL.length; i++) {
             axios
-            .get(filmsURL[i])
-            .then(res => {
-                filmsArray.push(res.data.title);
-                this.setState({loading: false})
-            })
-            .catch(err => {
-                console.log(err)
-            })
+                .get(filmsURL[i])
+                .then(res => {
+                    filmsArray.push(res.data.title);
+                    this.setState({ loading: false })
+                })
+                .catch(err => {
+                    console.log(err)
+                })
         }
-        this.setState({films: filmsArray})
+        this.setState({ films: filmsArray })
     }
 
     getHomeworld() {
@@ -97,7 +97,7 @@ class PeopleDetails extends Component {
             })
     }
 
-     componentDidMount(){
+    componentDidMount() {
         this.getHomeworld();
         this.getSpecies();
         this.getFilms();
@@ -110,23 +110,23 @@ class PeopleDetails extends Component {
 
         if (!this.state.expanded) {
             return (
-            <div>
-                <button type="button" className="btn btn-outline-info" onClick={this.toggle} style={{float:'right'}}>Show Details</button>
-            </div>
+                <div>
+                    <button type="button" className="btn btn-outline-info" onClick={this.toggle} style={{ float: 'right' }}>Show Details</button>
+                </div>
             )
         }
 
         else if (this.state.expanded && this.state.loading) {
             return (
-            <div>
-            <button type="button" className="btn btn-outline-info" onClick={this.toggle} style={{float:'right'}}>Loading</button>
-            </div>
+                <div>
+                    <button type="button" className="btn btn-outline-info" onClick={this.toggle} style={{ float: 'right' }}>Loading</button>
+                </div>
             )
         }
 
         return (
             <div>
-                <button type="button" className="btn btn-outline-info" onClick={this.toggle} style={{float:'right'}}>Hide Details</button>
+                <button type="button" className="btn btn-outline-info" onClick={this.toggle} style={{ float: 'right' }}>Hide Details</button>
                 <ul>
                     <li>Height: {details.height} </li>
                     <li>Mass: {details.mass}</li>

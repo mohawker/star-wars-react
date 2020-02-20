@@ -42,7 +42,6 @@ class App extends Component {
   }
 
   pageButtonClick = index => {
-    console.log('fetching ' + index + ' page')
     this.fetchData(index)
     this.setState({ currentPage: index })
   }
@@ -52,10 +51,10 @@ class App extends Component {
       <div className="container mt-3" >
         <img src={Logo} className="center" alt="Logo" />
         <h3 style={{ textAlign: 'center', marginBottom: '0px' }}>Character Encyclopedia</h3>
-        <Pagination currentPage={this.state.currentPage} lastPage={this.state.lastPage} pageButtonClick={this.pageButtonClick}/>
-        {this.state.loading === true ? <img src={Loading} className="center" alt="Loading..." /> : <PeopleList data={this.state.data}/>}
-        <Pagination currentPage={this.state.currentPage} lastPage={this.state.lastPage} pageButtonClick={this.pageButtonClick}/>
-        <p style = {{textAlign: 'center'}}>  Created by: Jun Jia <img src={Yoda} style = {{width:"8%"}} alt=":)" /> </p>
+        <Pagination currentPage={this.state.currentPage} lastPage={this.state.lastPage} pageButtonClick={this.pageButtonClick} />
+        {this.state.loading === true ? <img src={Loading} className="center" alt="Loading..." /> : <PeopleList data={this.state.data} />}
+        <Pagination currentPage={this.state.currentPage} lastPage={this.state.lastPage} pageButtonClick={this.pageButtonClick} />
+        <p style={{ textAlign: 'center' }}>  Created by: Jun Jia <img src={Yoda} style={{ width: "8%" }} alt=":)" /> </p>
       </div>
     )
   }
