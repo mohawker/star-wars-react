@@ -7,6 +7,7 @@ Alternatively, you can view the web application by forking the repo and running 
 
 ```
 cd star-wars-react
+npm install
 npm start
 ```
 ![](star-wars-react-gif.gif)
