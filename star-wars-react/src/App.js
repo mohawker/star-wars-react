@@ -28,7 +28,7 @@ class App extends Component {
   fetchData = index => {
     this.setState({ loading: true });
     axios
-      .get("https://swapi.co/api/people?page=" + index)
+      .get("https://swapi.dev/api/people?page=" + index)
       .then(res => {
         this.setState({
           loading: false,
